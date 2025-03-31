@@ -1,0 +1,23 @@
+CREATE DATABASE motorph;
+
+USE motorph;
+
+CREATE TABLE motorcycles (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    model VARCHAR(100),
+    brand VARCHAR(50),
+
+    year INT,
+    status VARCHAR(20), -- Available, Rented
+    price_per_hour DECIMAL(10,2)
+);
+
+CREATE TABLE rentals (
+    rental_id INT AUTO_INCREMENT PRIMARY KEY,
+    motorcycle_id INT,
+    customer_name VARCHAR(100),
+    rental_time DATETIME,
+    return_time DATETIME,
+    total_cost DECIMAL(10,2),
+    FOREIGN KEY (motorcycle_id) REFERENCES motorcycles(id)
+);
